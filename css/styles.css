@@ -1,10 +1,18 @@
 * {
     font-family: Helvetica;
 }
+#body1 {
+    background-color: black;
+    padding: 20px;
+}
 
-body {
-    background-color: aqua;
+#body {
+    background-color: rgb(51, 56, 51);
     padding: 15px;
+}
+
+h1 {
+    color: aliceblue;
 }
 
 .hide {
@@ -12,7 +20,7 @@ body {
 }
 
 a, input[type="submit"] {
-    background-color: blue;
+    background-color: rgb(109, 133, 22);
     color: aliceblue;
     padding: 10px 20px;
     border-radius: 5px;
@@ -46,5 +54,10 @@ form label {
 form input,
 form textarea {
     padding: 5px;
+}
+
+#posts-container {
+    background-color: rgb(118, 207, 173);
+    text-align: center;
 }
 
