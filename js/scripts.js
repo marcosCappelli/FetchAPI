@@ -43,6 +43,7 @@ async function getAllPosts() {
 
 }
 
+
 //GET individual post
 async function getPost(id) {
     const [responsePost, responseComments] = await Promise.all([
