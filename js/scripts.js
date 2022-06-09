@@ -3,6 +3,14 @@ const url = "https://jsonplaceholder.typicode.com/posts"
 const loadingElement = document.querySelector("#loading")
 const postsContainer = document.querySelector("#posts-container")
 
+const postPage = document.querySelector("#post");
+const postContainer = document.querySelector("#post-container");
+const commentsConatiner = document.querySelector("#comments-container");
+
+//GET id from URL
+const urlSearchParams = new URLSearchParams(window.location.search);
+const postId = urlSearchParams.get("id");
+
 // Get all posts
 async function getAllPosts() {
     const response = await fetch(url);
@@ -35,4 +43,28 @@ async function getAllPosts() {
 
 }
 
-getAllPosts()
+//GET individual post
+async function getPost(id) {
+    const [responsePost, responseComments] = await Promise.all([
+        fetch(`${url}/${id}`),
+        fetch(`${url}/${id}/comments`),
+    ]);  // Assim será executado as duas request ao mesmo tempo
+
+    //Extrair os dados agora
+    const dataPost = await responsePost.json();
+
+    const dataComments = await responseComments.json();  
+    //Assim teremos dois arreis de objetos
+
+    //Agora tirar looding
+    loadingElement.classList.add("hide");
+    //Aparecer comentários
+    postPage.classList.remove("hide");
+
+}
+
+if (!postId) {
+    getAllPosts();
+} else {
+    getPost(postId);
+}
